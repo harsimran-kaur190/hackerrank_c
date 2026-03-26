@@ -12,4 +12,4 @@ int main()
     scanf("%f %f",&c,&d);
     printf("%.1f %.1f",(c+d),(c-d));
     return 0;
-}
+} 
