@@ -81,45 +81,100 @@ int second_Largest(int *ptr, int n){
     return second_largest;
 }
 
-
-int main(){
-    int n;
-    scanf("%d",&n);
-    int arr[n];
-    int a[n];
-    for(int i=0;i<n;i++){
-        scanf("%d",&arr[i]);
+void rotateByOne(int arr[],int n){
+    int *ptr;
+    ptr=arr;
+    int temp=*(arr+n-1);
+     for(int i = n - 1; i > 0; i--){
+        *(ptr + i) = *(ptr + i - 1);  
     }
-    int *ptr=arr;
-
-    modify_elements(ptr,n);
-
-    for(int i=0;i<n;i++){
-        printf("%d ",arr[i]);
-    }
-
-    printf("%d",sum(ptr,n));
-
-    printf("%d ",findMax(ptr,n));
-
-    reverse(ptr,n);
-
-    for(int i=0;i<n;i++){
-        printf("%d ",arr[i]);
-    }
-
-    swap_alternate(ptr,n);
-    for(int i=0;i<n;i++){
-        printf("%d ",arr[i]);
-    }
-
-    printf("%d",countEven(ptr,n));
-
-    copy_array(ptr,a,n);
-    for(int i=0;i<n;i++){
-        printf("%d ",a[i]);
-    }
-
-    printf("%d",second_Largest(ptr,n));
-    return 0;
+    *ptr = temp;
 }
+
+int * mergeArrays(int a[], int b[], int asize, int bsize) 
+{
+    int *final = (int*)malloc((asize + bsize) * sizeof(int));
+    int index=0;
+    for(int i=0;i<asize;i++){
+        final[index]=a[i];
+        index++;
+    }
+    for(int i=0;i<bsize;i++){
+        final[index]=b[i];
+        index++;
+    }
+
+    return final;
+}
+
+int main()
+{
+    int i, k, size = 0, size1 = 0, *final;
+   
+    scanf("%d", &size);
+    int a[size];
+    for( i = 0; i < size; i++) 
+        scanf("%d", &a[i]);
+
+    scanf("%d", &size1);
+    int b[size1];
+    for( i = 0; i < size1; i++) 
+        scanf("%d", &b[i]);
+     
+    final = mergeArrays(a, b, size, size1);
+    
+    for (i = 0; i < (size + size1); i++) 
+        printf("%d\n", final[i]);
+
+  return 0;
+}
+
+// int main(){
+//     int n;
+//     scanf("%d",&n);
+//     int arr[n];
+//     int a[n];
+//     for(int i=0;i<n;i++){
+//         scanf("%d",&arr[i]);
+//     }
+
+
+//     // rotateByOne(arr,n);
+
+//     for(int i=0;i<n;i++){
+//         printf("%d ",arr[i]);
+//     }
+
+//     // int *ptr=arr;
+
+//     // modify_elements(ptr,n);
+
+//     // for(int i=0;i<n;i++){
+//     //     printf("%d ",arr[i]);
+//     // }
+
+//     // printf("%d",sum(ptr,n));
+
+//     // printf("%d ",findMax(ptr,n));
+
+//     // reverse(ptr,n);
+
+//     // for(int i=0;i<n;i++){
+//     //     printf("%d ",arr[i]);
+//     // }
+
+//     // swap_alternate(ptr,n);
+//     // for(int i=0;i<n;i++){
+//     //     printf("%d ",arr[i]);
+//     // }
+
+//     // printf("%d",countEven(ptr,n));
+
+//     // copy_array(ptr,a,n);
+//     // for(int i=0;i<n;i++){
+//     //     printf("%d ",a[i]);
+//     // }
+
+//     // printf("%d",second_Largest(ptr,n));
+//     return 0;
+// }
